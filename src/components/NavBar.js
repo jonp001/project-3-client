@@ -8,7 +8,8 @@ export default function NavBar() {
 
     const [formData, setFormData] = useState({
         email: "",
-        password: ""
+        password: "",
+        name: "",
     })
 
     const [isSignUp, setisSignUp] = useState(null);
@@ -26,6 +27,7 @@ export default function NavBar() {
 
         try {
           console.log({urlType})
+          console.log('Sending data:', formData);
             const data= await axios.post (
                 `http://localhost:5005/auth/${urlType}`,
             formData,
@@ -36,7 +38,10 @@ export default function NavBar() {
                 },
             }
         );
-        setUser(() => (isSignUp ? null : data ));
+
+        console.log('Received response:', data); 
+
+        setUser(() => (isSignUp ? null : data));
         } catch(error) {
             console.log(error)
         }
@@ -81,7 +86,7 @@ export default function NavBar() {
                 <input
                 type="text"
                 name="name"
-                vale={formData.name}
+                value={formData.name}
                 onChange={handleChange}
                 />
               </label>
