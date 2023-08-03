@@ -1,4 +1,5 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 export default function EventDetails() {
     const eventList = [
@@ -18,11 +19,16 @@ export default function EventDetails() {
             eventType: "race"
         },
     ]
+
+  const { eventId } = useParams();
+
+  const event= eventList[eventId];
+
   return (
     <div>
-        {eventList.map((event, i) => (
-        <p key={i}>{event.title}-{event.description}</p>
-        ))}
+       <h2> Event Title: {event.title} </h2>
+       <h3> Event Description: {event.description} </h3>
+       <h3> Event Type: {event.eventType} </h3>
     </div>
   )
 }

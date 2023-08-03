@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+
 
 export default function Events() {
     const eventList = [
@@ -20,9 +22,11 @@ export default function Events() {
     ]
   return (
     <div>
+    
         {eventList.map((event, i) => (
-        <p key={i}>{event.title}-{event.description}</p>
+        <Link key={i} to={`/events/${i}`}><li>{event.title}-{event.description}</li></Link>
         ))}
+        
     </div>
   )
 }

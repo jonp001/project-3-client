@@ -4,12 +4,16 @@ import { createContext, useEffect, useState } from "react";
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-	const [user, setUser] = useState(
-		JSON.parse(localStorage.getItem("user")) || null
-	);
+	const [user, setUser] = useState(() => {
+		const storedUser = localStorage.getItem("user");
+		return storedUser && storedUser!== "undefined" ? JSON.parse(storedUser) : null;
+	})
 
 	useEffect(() => {
-		localStorage.setItem("user", JSON.stringify(user));
+		if(user !== undefined) {
+			localStorage.setItem("user", JSON.stringify(user));
+		}
+
 	}, [user]);
 
 	return (

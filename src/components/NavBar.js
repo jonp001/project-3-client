@@ -12,7 +12,11 @@ export default function NavBar() {
         name: "",
     })
 
+  
     const [isSignUp, setisSignUp] = useState(null);
+
+    const [successMessage, setSuccessMessage] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const handleChange= (e) => {
         setFormData((prevState) => ({
@@ -23,30 +27,35 @@ export default function NavBar() {
 
     const submitForm = async () => {
         let urlType= isSignUp ? "signup" : "login";
-        let storedToken = localStorage.getItem("user");
+        setSuccessMessage(null);
+        setErrorMessage(null);
 
         try {
-          console.log({urlType})
+          
           console.log('Sending data:', formData);
-            const data= await axios.post (
+            const response= await axios.post (
                 `http://localhost:5005/auth/${urlType}`,
-            formData,
-            {
-                // withCredentials: true,
-                headers: {
-                    Authorization: `Bearer ${storedToken}`,
-                },
-            }
-        );
+            formData
+            );
+      
 
-        console.log('Received response:', data); 
+        console.log('Received response:', response); 
 
-        setUser(() => (isSignUp ? null : data));
-        } catch(error) {
-            console.log(error)
-        }
-    };
+      const authToken= response.data.authToken;
+      localStorage.setItem("user", authToken);
 
+      if( response.data.user){
+        setUser(response.data.user);
+      }
+
+      setSuccessMessage(`Successfully ${isSignUp ? "signed up" : "logged in"}!!`);
+
+    }catch (err) {
+      console.log(err);
+    
+      setErrorMessage("Login/signup failed. Try again.")
+    }
+  }
     const handleSubmit= (e) => {
         e.preventDefault();
         submitForm();
@@ -60,6 +69,8 @@ export default function NavBar() {
           </nav>
           <button onClick={() => setisSignUp(true)}>Sign Up</button>
           <button onClick={() => setisSignUp(false)}>Log In</button>
+          {successMessage && <div className= "successMessage">{successMessage}</div>}
+          {errorMessage && <div className="errorMessage"> {errorMessage}</div>}
           {isSignUp !== null && (
             <form onSubmit={handleSubmit}>
             <div>

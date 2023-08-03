@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import HomePage from "./components/HomePage";
 import { UserProvider } from "./contexts/User.context";
 import Events from "./components/events/Events";
+import EventDetails from "./components/events/EventDetails";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/events/:eventId" element={<EventDetails />} />
           </Routes>
       </UserProvider>
     
