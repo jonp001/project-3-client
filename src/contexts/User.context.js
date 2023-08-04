@@ -5,13 +5,13 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
 	const [user, setUser] = useState(() => {
-		const storedUser = localStorage.getItem("user");
+		const storedUser = localStorage.getItem("userInfo");
 		return storedUser && storedUser!== "undefined" ? JSON.parse(storedUser) : null;
 	})
 
 	useEffect(() => {
 		if(user !== undefined) {
-			localStorage.setItem("user", JSON.stringify(user));
+			localStorage.setItem("userInformation", JSON.stringify(user));
 		}
 
 	}, [user]);

@@ -42,9 +42,10 @@ export default function NavBar() {
         console.log('Received response:', response); 
 
       const authToken= response.data.authToken;
-      localStorage.setItem("user", authToken);
+      localStorage.setItem("authToken", authToken);
 
       if( response.data.user){
+        localStorage.setItem("userInfo", JSON.stringify(response.data.user));
         setUser(response.data.user);
       }
 
