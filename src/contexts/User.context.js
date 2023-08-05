@@ -9,6 +9,12 @@ export const UserProvider = ({ children }) => {
 		return storedUser && storedUser!== "undefined" ? JSON.parse(storedUser) : null;
 	})
 
+	const updateUserProfile = (profileUpdates) => {
+		const updatedUser = { ...user, ...profileUpdates};
+		setUser(updatedUser)
+		localStorage.setItem("userInfo", JSON.stringify(updatedUser));
+	}
+
 	useEffect(() => {
 		if(user !== undefined) {
 			localStorage.setItem("userInformation", JSON.stringify(user));
@@ -17,7 +23,7 @@ export const UserProvider = ({ children }) => {
 	}, [user]);
 
 	return (
-		<UserContext.Provider value={{ user, setUser }}>
+		<UserContext.Provider value={{ user, setUser, updateUserProfile }}>
 			{children}
 		</UserContext.Provider>
 	);

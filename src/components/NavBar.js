@@ -50,6 +50,7 @@ export default function NavBar() {
       }
 
       setSuccessMessage(`Successfully ${isSignUp ? "signed up" : "logged in"}!!`);
+      setisSignUp(null);
 
     }catch (err) {
       console.log(err);
@@ -62,14 +63,28 @@ export default function NavBar() {
         submitForm();
     };
 
+    const handleLogout = () => {
+      setUser(null);
+      localStorage.removeItem("userInfo");
+      localStorage.removeItem("authToken");
+    };
+
     return (
         <div>
           <nav>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/events">Events</NavLink>
+            {user &&<NavLink to={`/users/${user._id}`}> Profile </NavLink>}
           </nav>
+          {user ? (
+            <button onClick={handleLogout}>Logout </button>
+          ): (
+            <>
           <button onClick={() => setisSignUp(true)}>Sign Up</button>
           <button onClick={() => setisSignUp(false)}>Log In</button>
+            </>
+          )}
+
           {successMessage && <div className= "successMessage">{successMessage}</div>}
           {errorMessage && <div className="errorMessage"> {errorMessage}</div>}
           {isSignUp !== null && (
@@ -93,6 +108,7 @@ export default function NavBar() {
                   onChange={handleChange}
                 />
               </label>
+              {isSignUp && (
               <label>
                 Name: {" "}
                 <input
@@ -100,8 +116,10 @@ export default function NavBar() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                required
                 />
               </label>
+              )}
             </div>
             <button type="submit">{isSignUp ? "Sign up" : "Login"} </button>
             </form>
