@@ -10,6 +10,7 @@ export default function CreateEvent() {
         img: "",
         level: "",
         description: "",
+        eventType: "",
 
     });
 
@@ -32,19 +33,45 @@ export default function CreateEvent() {
   
     return (
     <form onSubmit={handleSubmit}>
+       
         <label>
             Title: 
             <input type="text" name="title" value={formData.title} onChange={handleChange} />
         </label>
+       
+        <label>
             Level: 
             <input type='text' name="level" value={formData.level} onChange={handleChange} />
-        <label>
+        </label>
+        
         <label>
             Description:
             <input type="text" name="description" value={formData.description} onChange={handleChange} />
         </label>
-            
-        </label>
+        
+       <label>
+        Event Type: 
+       <label>
+        <input 
+          type="radio"
+          name="eventType"
+          value="race"
+          checked={formData.eventType=== "race"}
+          onChange={handleChange}
+          /> Race
+          </label>
+
+          <label>
+            <input 
+              type="radio"
+              name="eventType"
+              value="group ride"
+              checked={formData.eventType=== "group ride"}
+              onChange={handleChange}
+              /> Group Ride
+          </label>
+          </label>
+
         <button type="submit">Create Event Listing</button>
 
 

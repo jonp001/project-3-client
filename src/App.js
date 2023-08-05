@@ -7,7 +7,7 @@ import { LocationProvider } from "./contexts/Location.context";
 import Events from "./components/events/Events";
 import EventDetails from "./components/events/EventDetails";
 import CreateEvent from "./components/events/CreateEvent";
-
+import EventsPage from "./pages/EventsPage";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/createEvent" element = { <CreateEvent/> } />
-            <Route path="/events" element={<Events />} />
+            <Route path="/events" element={<EventsPage />} />
             <Route path="/events/:eventId" element={<EventDetails />} />
           </Routes>
           </LocationProvider>
