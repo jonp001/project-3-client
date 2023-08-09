@@ -1,28 +1,32 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import axios from "axios";
 
 export default function EventDetails() {
-    const eventList = [
-        {
-            title: "First bike race of season",
-            description: "covering all categories(cat 1-5)",
-            eventType: "race"
-        },
-        {
-            title: "Weekly group ride (A) ",
-            description: "Avg speed 23+ mph",
-            eventType: "group ride"
-        },
-        {
-            title: "second bike race of season",
-            description: "covering all categories (cat 1-5)",
-            eventType: "race"
-        },
-    ]
-
   const { eventId } = useParams();
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const event= eventList[eventId];
+  useEffect(() => {
+    axios.get(`http://localhost:5005/events/${eventId}`)
+    .then(response => {
+        setEvent(response.data.event);
+        setLoading(false);
+    })
+    .catch(err => {
+        setError(err.message);
+        setLoading(false);
+    })
+  }, [eventId]);
+
+  if(loading) {
+    return <div> Event Details Loading...</div>;
+  }
+  
+  if(error) {
+    return <div> Error Loading Event Details: {error}</div>;
+  }
 
   return (
     <div>

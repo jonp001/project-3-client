@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "../../contexts/Location.context";
+import axios from 'axios';
 
 
 export default function CreateEvent() {
@@ -26,9 +27,11 @@ export default function CreateEvent() {
   const handleSubmit= async (e) => {
     e.preventDefault();
     // TODO: AXIOS CALL that create the event listing in db..
+    const response= await axios.post("http://localhost:5005/events/createEvent", formData);
+    const createdEvent= response.data;
 
     // Redirection to select location
-    navigate("/chooseLocation");
+    navigate("/chooseLocation", { state: { eventId: createdEvent._id} });
   };
   
     return (

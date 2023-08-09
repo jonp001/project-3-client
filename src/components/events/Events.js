@@ -1,30 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 
 export default function Events() {
-    const eventList = [
-        {
-            title: "First bike race of season",
-            description: "covering all categories(cat 1-5)",
-            eventType: "race"
-        },
-        {
-            title: "Weekly group ride (A) ",
-            description: "Avg speed 23+ mph",
-            eventType: "group ride"
-        },
-        {
-            title: "second bike race of season",
-            description: "covering all categories (cat 1-5)",
-            eventType: "race"
-        },
-    ]
+    const [eventList, setEventList] = useState([])
+
+    useEffect(() => {
+        axios.get("http://localhost:5005/events")
+        .then(response => {
+            console.log("Server Response:", response.data)
+            setEventList(response.data.titles);
+        })
+        .catch(error => {
+            console.log("An error has occured getting events:", error);
+        });
+    }, []);
+
+
   return (
     <div>
-    
         {eventList.map((event, i) => (
-        <Link key={i} to={`/events/${i}`}><li>{event.title}-{event.description}</li></Link>
+        <Link key={event._id} to={`/events/${event._id}`}><li>{event.title}-{event.description}</li></Link>
         ))}
         
     </div>
