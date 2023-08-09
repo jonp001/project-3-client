@@ -30,7 +30,8 @@ export default function ChooseLocation() {
             city: chosenLocation.city,
             state: chosenLocation.state,
         };
-
+        console.log('locationState:', locationState);
+        
         try{
             const response= await axios.post("http://localhost:5005/locations/location", locationRequestData);
             if( response.status === 201) {
@@ -50,7 +51,7 @@ export default function ChooseLocation() {
         const { name, value} = e.target; 
         setChosenLocation(prevState => ({
             ...prevState,
-            [name]: value
+            [name]: name ==="latitude" || name === "longitude" ? parseFloat(value) : value // remember parseFloat can convert string => number
         }));
      };
     
@@ -61,9 +62,9 @@ export default function ChooseLocation() {
     <form onSubmit={(e) => {
         e.preventDefault();
         handleChooseLocation();
-    }}>
-        <input type="text" name="latitude" onChange={handleChange} placeholder='Latitude' />
-        <input type='text' name='longitude' onChange={handleChange} placeholder='Longitude' />
+    }}> {/*use the "step=any" to allow for floating point numbers" */}
+        <input type="number" name="latitude" step="any" onChange={handleChange} placeholder='Latitude' />
+        <input type='number' name='longitude' step="any" onChange={handleChange} placeholder='Longitude' />
         <input type='text' name='address' onChange={handleChange} placeholder='Address' />
         <input type='text' name='city' onChange={handleChange} placeholder='City' />
         <input type='text' name='state' onChange={handleChange} placeholder='State' />

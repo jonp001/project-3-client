@@ -28,8 +28,10 @@ export default function CreateEvent() {
     e.preventDefault();
     // TODO: AXIOS CALL that create the event listing in db..
     const response= await axios.post("http://localhost:5005/events/createEvent", formData);
-    const createdEvent= response.data;
+    console.log('Server response:', response);
+    const createdEvent= response.data.event;
 
+    console.log('Navigating to chooseLocation with eventId:', createdEvent._id);
     // Redirection to select location
     navigate("/chooseLocation", { state: { eventId: createdEvent._id} });
   };
