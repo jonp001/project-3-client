@@ -8,7 +8,7 @@ export const useLocation= () => {
 }
 
 export const LocationProvider = ({ children}) => {
-    const [locationData, setLocationData] = useState({ latitude: null, longitude: null});
+    const [locationData, setLocationData] = useState({ lat: null, lng: null});
 
   return (
     <LocationContext.Provider value= {{ locationData, setLocationData}} >

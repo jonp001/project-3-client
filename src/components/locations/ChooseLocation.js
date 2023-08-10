@@ -9,8 +9,8 @@ export default function ChooseLocation() {
     const eventId= locationState?.eventId;
     const { setLocationData } = useLocationContext();
     const [chosenLocation, setChosenLocation] = useState({
-        latitude: "",
-        longitude: "",
+        lat: "",
+        lng: "",
         address: "",
         city: "",
         state: ""
@@ -22,8 +22,8 @@ export default function ChooseLocation() {
     const handleChooseLocation= async ()  => {
         const locationRequestData = {
             startLocation: {
-                latitude: chosenLocation.latitude,
-                longitude: chosenLocation.longitude,
+                lat: chosenLocation.lat,
+                lng: chosenLocation.lng,
                 address: chosenLocation.address,
             },
             eventId,
@@ -51,7 +51,7 @@ export default function ChooseLocation() {
         const { name, value} = e.target; 
         setChosenLocation(prevState => ({
             ...prevState,
-            [name]: name ==="latitude" || name === "longitude" ? parseFloat(value) : value // remember parseFloat can convert string => number
+            [name]: name ==="lat" || name === "lng" ? parseFloat(value) : value // remember parseFloat can convert string => number
         }));
      };
     
@@ -63,8 +63,8 @@ export default function ChooseLocation() {
         e.preventDefault();
         handleChooseLocation();
     }}> {/*use the "step=any" to allow for floating point numbers" */}
-        <input type="number" name="latitude" step="any" onChange={handleChange} placeholder='Latitude' />
-        <input type='number' name='longitude' step="any" onChange={handleChange} placeholder='Longitude' />
+        <input type="number" name="lat" step="any" onChange={handleChange} placeholder='Latitude' />
+        <input type='number' name='lng' step="any" onChange={handleChange} placeholder='Longitude' />
         <input type='text' name='address' onChange={handleChange} placeholder='Address' />
         <input type='text' name='city' onChange={handleChange} placeholder='City' />
         <input type='text' name='state' onChange={handleChange} placeholder='State' />

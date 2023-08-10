@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
-import { LocationContext } from "../../contexts/Location.context";
+import { useLocation } from "../../contexts/Location.context";
 
 
 const mapContainerStyle= {
@@ -9,9 +9,10 @@ const mapContainerStyle= {
 };
 
 export default function MapView() {
-    const { locationData } = useContext(LocationContext);
+    const { locationData } = useLocation();
 
-    const center= locationData[0];
+    const center= locationData;
+    console.log(center);
 
   return (
     <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
@@ -20,9 +21,8 @@ export default function MapView() {
     center={center}
     zoom={10}
     >
-      {locationData.map((location, index) => (
-        <Marker key={index} position={location} />
-      ))}
+      
+      <Marker position={locationData} />
     </GoogleMap>
     </LoadScript>
   );

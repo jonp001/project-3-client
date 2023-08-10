@@ -1,24 +1,43 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from "axios";
+import MapView from "../../components/locations/MapView";
+import { useLocation } from "../../contexts/Location.context";
 
 export default function EventDetails() {
   const { eventId } = useParams();
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const  { setLocationData } = useLocation()
 
   useEffect(() => {
     axios.get(`http://localhost:5005/events/${eventId}`)
     .then(response => {
+      console.log("Location Data from API:", response.data);
         setEvent(response.data.event);
-        setLoading(false);
+      
+      if(response.data.event.location && response.data.event.location.startLocation) {
+        console.log(typeof response.data.event.location.startLocation.lat);
+        console.log(typeof response.data.event.location.startLocation.lng);
+
+        if(typeof response.data.event.location.startLocation.lat === 'number' && typeof response.data.event.location.startLocation.lng === 'number') {
+          setLocationData({
+              lat: response.data.event.location.startLocation.lat,
+              lng: response.data.event.location.startLocation.lng});
+      } else {
+        console.error(" location data type is incorrect.")
+      }
+      } else {
+        console.error("Location data is not found or incorrect.");
+      }
+        setLoading(false)
     })
     .catch(err => {
         setError(err.message);
         setLoading(false);
     })
-  }, [eventId]);
+  }, [eventId, setLocationData]);
 
   if(loading) {
     return <div> Event Details Loading...</div>;
@@ -30,9 +49,13 @@ export default function EventDetails() {
 
   return (
     <div>
+    {event ? (
+      <div>
        <h2> Event Title: {event.title} </h2>
        <h3> Event Description: {event.description} </h3>
        <h3> Event Type: {event.eventType} </h3>
+       {event.location && event.location.startLocation && typeof event.location.startLocation.lat === 'number' && typeof event.location.startLocation.lng === 'number' && <MapView />}
+       </div>
+    ) : null}
     </div>
-  )
-}
+  )};
