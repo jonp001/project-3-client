@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 import { useLocation } from "../../contexts/Location.context";
 
 
@@ -19,10 +19,10 @@ export default function MapView() {
     <GoogleMap
     mapContainerStyle={mapContainerStyle}
     center={center}
-    zoom={10}
+    zoom={20}
     >
       
-      <Marker position={locationData} />
+      <MarkerF position={locationData} />
     </GoogleMap>
     </LoadScript>
   );

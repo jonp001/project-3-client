@@ -24,6 +24,7 @@ function App() {
             <Route path="chooseLocation" element = { <ChooseLocation /> } />
             <Route path="/events" element={<EventsPage />} />
             <Route path="/events/:eventId" element={ <EventDetails />} />
+            
             <Route path="/users/:userId" element={ <UserProfilePage /> } />
           </Routes>
           </LocationProvider>
