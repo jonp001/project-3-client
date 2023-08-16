@@ -12,6 +12,7 @@ export default function CreateEvent() {
         level: "",
         description: "",
         eventType: "",
+        createdBy: "",
 
     });
 
@@ -26,15 +27,26 @@ export default function CreateEvent() {
 
   const handleSubmit= async (e) => {
     e.preventDefault();
-    // TODO: AXIOS CALL that create the event listing in db..
-    const response= await axios.post("http://localhost:5005/events/createEvent", formData);
-    console.log('Server response:', response);
+   
+    const token= localStorage.getItem('authToken');
+    console.log('Token from localStorage:', token);
+    const config= {
+      headers: {
+        "Authorization" : `Bearer ${token}`
+      }
+    }
+    try{ 
+    const response= await axios.post("http://localhost:5005/events/createEvent", formData, config);
+    console.log('Server response:', response.data);
     const createdEvent= response.data.event;
 
     console.log('Navigating to chooseLocation with eventId:', createdEvent._id);
     // Redirection to select location
-    navigate("/chooseLocation", { state: { eventId: createdEvent._id} });
-  };
+    navigate(`/chooseLocation/${createdEvent._id}`);
+  } catch (error) {
+    console.error('Error creating event:', error.response?.data || error.message);
+  }
+}
   
     return (
     <form onSubmit={handleSubmit}>
