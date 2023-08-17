@@ -15,6 +15,32 @@ export default function EventDetails() {
   const [error, setError] = useState(null);
   const  { setLocationData } = useLocation()
  const { user: userData } = useContext(UserContext);
+ const [isDeleted, setIsDeleted] = useState(false);
+
+
+ const handleDeleteEvent = () => {
+  //popup to confirm delete 
+  if (!window.confirm("Are you sure you want to delete this event? (Location will also be DELETED)")) {
+    return;
+  }
+
+  const token = localStorage.getItem("authToken");
+  const config = {
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+  };
+
+  axios
+    .delete(`http://localhost:5005/events/event/${event._id}`, config)
+    .then(response => {
+        setIsDeleted(true);
+    })
+    .catch(err => {
+        console.error("Error deleting the event:", err);
+    });
+};
+
 
   useEffect(() => {
     axios.get(`http://localhost:5005/events/${eventId}`)
@@ -62,7 +88,10 @@ export default function EventDetails() {
        <h4> Created By: {event.createdBy ? event.createdBy.name : "Unknown"} </h4>
        {event.location && event.location.startLocation && typeof event.location.startLocation.lat === 'number' && typeof event.location.startLocation.lng === 'number' && <MapView />}
        { (userData.isAdmin || event.createdBy._id === userData._id) && (
+        <div>
     <Link to={`/events/edit-event/${event._id}`}>Edit Event</Link>
+    <button onClick={handleDeleteEvent}>Delete Event</button>
+    </div>
 )}
        </div>
     ) : null}
