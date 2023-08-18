@@ -45,7 +45,7 @@ export default function EditEvent() {
           };
       
       await axios.put(
-        `${API_URL}events/edit-event/${eventId}`,
+        `${API_URL}/events/edit-event/${eventId}`,
         updatedEventData,
         config
       );
