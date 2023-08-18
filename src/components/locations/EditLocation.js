@@ -116,6 +116,77 @@ export default function EditLocation() {
             />
             <button type="submit">Update Location</button>
         </form>
+
+<div className="instructions">
+        (
+        <b>
+          <em>
+            ONLY LATITUDE, LONGITUDE, STATE & CITY ARE <u>REQUIRED</u>
+          </em>
+        </b>
+        ) How To Get Coordinates(Latitude & Longitude)?
+        <div className="instructions-content">
+          <b>Google Maps:</b>
+          <ul>
+            <li>
+              1a. (Mobile App): Touch & <b>HOLD</b> the desired location in
+              Google Maps until a red "dropped pin" appears.
+            </li>
+
+            <li>
+              1b. (Web App): Press & <b>HOLD</b> left click button at the desired
+              location until a small grey "dropped pin".
+            </li>
+
+            <li>
+              2a. (Mobile App): Scroll down until you see a map pin/ map marker
+              icon on the left (typically found under a photo of the area).
+            </li>
+
+            <li>
+              2b. (Web App): You should see a little popup at the center of the
+              bottom of your screen.
+            </li>
+            <li>
+              3a. (Mobile App): Please use <b>ALL DIGITS</b> found in the
+              paranthesis to input the coordinates(
+              <em>
+                <b>
+                  The first set of numbers= Latitude & second set= Longitude
+                </b>{" "}
+              </em>
+              )
+            </li>
+            <li>
+              3b. (Web App): Please use <b>ALL DIGITS</b> found in the little
+              popup to input the coordinates(
+              <em>
+                <b>
+                  The first set of numbers= Latitude & second set= Longitude
+                </b>{" "}
+              </em>
+              )
+            </li>
+          </ul>
+          <br />
+          <b>Bing Maps:</b> 
+            <ul>
+              <li>
+                1. (Web App): Simply right click on desired location
+              </li>
+              <li>
+                2. (Web App): Obtain the Latitude and Longitude at the very bottom of the drop down menu that appeared (Please use <b>ALL DIGITS</b>) (     <em>
+                <b>
+                  The first set of numbers= Latitude & second set= Longitude
+                </b>{" "}
+              </em>
+              )
+              </li>
+            </ul>
+            <b>Apple Maps: (As of IOS 16 map update does not show Latitude & Longitutude)</b> 
+             
+        </div>
+      </div>
     </div>
   );
 }

@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.instructions {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.instructions-content {
+  display: none;
+  position: absolute;
+  width: 250px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 10px;
+  z-index: 1;
+}
+
+.instructions:hover .instructions-content {
+  display: block;
+}

@@ -75,7 +75,13 @@ export default function NavBar() {
           <nav>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/events">Events</NavLink>
-            {user &&<NavLink to={`/users/${user._id}`}> Profile </NavLink>}
+            
+            {user &&(
+              <div>
+              <span> Hello, {user.name} </span>
+              <NavLink to={`/users/${user._id}`}> Profile </NavLink>
+              </div>
+              )}
           </nav>
           {user ? (
             <button onClick={handleLogout}>Logout </button>
