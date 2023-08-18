@@ -36,7 +36,7 @@ export default function NavBar() {
           console.log('Sending data:', formData);
             const response= await axios.post (
                 `${API_URL}/auth/${urlType}`,
-            formData
+            formData, { withCredentials: true }
             );
       
 
