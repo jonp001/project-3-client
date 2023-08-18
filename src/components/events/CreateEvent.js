@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "../../contexts/Location.context";
 import axios from 'axios';
+const API_URL= process.env.REACT_APP_URL || "http://localhost:5005";
 
 
 export default function CreateEvent() {
@@ -36,7 +37,7 @@ export default function CreateEvent() {
       }
     }
     try{ 
-    const response= await axios.post("http://localhost:5005/events/createEvent", formData, config);
+    const response= await axios.post(`${API_URL}/events/createEvent`, formData, config);
     console.log('Server response:', response.data);
     const createdEvent= response.data.event;
 

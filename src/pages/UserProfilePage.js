@@ -3,6 +3,7 @@ import axios from 'axios';
 import UserContext from '../contexts/User.context';
 import EditProfile from '../components/profiles/EditProfile';
 import { useParams } from 'react-router-dom';
+const API_URL= process.env.REACT_APP_URL || "http://localhost:5005";
 
 export default function UserProfilePage() {
     const { userId } = useParams();
@@ -14,7 +15,7 @@ export default function UserProfilePage() {
 
     useEffect(() => {
      
-        axios.get(`http://localhost:5005/user/${userId}`)
+        axios.get(`${API_URL}/user/${userId}`)
           .then((response) => {
             setViewedUser(response.data);
           })

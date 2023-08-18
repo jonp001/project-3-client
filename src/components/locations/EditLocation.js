@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+const API_URL= process.env.REACT_APP_URL || "http://localhost:5005";
 
 
 export default function EditLocation() {
@@ -14,7 +15,7 @@ export default function EditLocation() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5005/locations/location/${locationId}`) // Assuming you have this endpoint to fetch individual location by id
+      .get(`${API_URL}/locations/location/${locationId}`) // Assuming you have this endpoint to fetch individual location by id
       .then((response) => {
         setLocationData(response.data.location);
       })
@@ -55,7 +56,7 @@ export default function EditLocation() {
 
     try {
       await axios.put(
-        `http://localhost:5005/locations/edit-location/${locationId}`,
+        `${API_URL}/locations/edit-location/${locationId}`,
         locationData,
         config
       );

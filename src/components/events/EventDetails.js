@@ -5,6 +5,7 @@ import MapView from "../../components/locations/MapView";
 import { useLocation } from "../../contexts/Location.context";
 import UserContext from '../../contexts/User.context';
 import { Link } from 'react-router-dom';
+const API_URL= process.env.REACT_APP_URL || "http://localhost:5005";
 
 
 export default function EventDetails() {
@@ -32,7 +33,7 @@ export default function EventDetails() {
   };
 
   axios
-    .delete(`http://localhost:5005/events/event/${event._id}`, config)
+    .delete(`${API_URL}/events/event/${event._id}`, config)
     .then(response => {
         setIsDeleted(true);
     })
@@ -43,7 +44,7 @@ export default function EventDetails() {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:5005/events/${eventId}`)
+    axios.get(`${API_URL}/events/${eventId}`)
     .then(response => {
       console.log("Location Data from API:", response.data);
         setEvent(response.data.event);

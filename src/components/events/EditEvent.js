@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+const API_URL= process.env.REACT_APP_URL || "http://localhost:5005";
 
 export default function EditEvent() {
   const { eventId } = useParams();
@@ -10,7 +11,7 @@ export default function EditEvent() {
   useEffect(() => {
     // Fetch the event data on component mount
     axios
-      .get(`http://localhost:5005/events/${eventId}`)
+      .get(`${API_URL}/events/${eventId}`)
       .then((response) => {
         setFormData(response.data.event);
         console.log("Fetched event data:", response.data.event);
@@ -44,7 +45,7 @@ export default function EditEvent() {
           };
       
       await axios.put(
-        `http://localhost:5005/events/edit-event/${eventId}`,
+        `${API_URL}events/edit-event/${eventId}`,
         updatedEventData,
         config
       );

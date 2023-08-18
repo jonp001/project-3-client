@@ -2,6 +2,7 @@ import {useState, useContext} from 'react'
 import UserContext from "../contexts/User.context";
 import axios from "axios";
 import { NavLink } from 'react-router-dom';
+const API_URL= process.env.REACT_APP_URL || "http://localhost:5005";
 
 export default function NavBar() {
     const {user, setUser} = useContext(UserContext);
@@ -34,7 +35,7 @@ export default function NavBar() {
           
           console.log('Sending data:', formData);
             const response= await axios.post (
-                `http://localhost:5005/auth/${urlType}`,
+                `${API_URL}/auth/${urlType}`,
             formData
             );
       
