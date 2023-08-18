@@ -5,7 +5,7 @@ import MapView from "../../components/locations/MapView";
 import { useLocation } from "../../contexts/Location.context";
 import UserContext from '../../contexts/User.context';
 import { Link } from 'react-router-dom';
-const API_URL= process.env.REACT_APP_URL || "http://localhost:5005";
+const API_URL= process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 
 export default function EventDetails() {

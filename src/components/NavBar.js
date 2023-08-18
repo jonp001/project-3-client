@@ -2,7 +2,7 @@ import {useState, useContext} from 'react'
 import UserContext from "../contexts/User.context";
 import axios from "axios";
 import { NavLink } from 'react-router-dom';
-const API_URL= process.env.REACT_APP_URL || "http://localhost:5005";
+const API_URL= process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 export default function NavBar() {
     const {user, setUser} = useContext(UserContext);

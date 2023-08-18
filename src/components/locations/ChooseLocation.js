@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { useLocation as useLocationContext } from "../../contexts/Location.context";
 import { useParams } from "react-router-dom";
-const API_URL= process.env.REACT_APP_URL || "http://localhost:5005";
+const API_URL= process.env.REACT_APP_API_URL || "http://localhost:5005";
 
 export default function ChooseLocation() {
   const { eventId } = useParams();
