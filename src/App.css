@@ -307,6 +307,7 @@ form label {
 
 form input[type="email"], 
 form input[type="password"],
+form input[type="number"],
 form input[type="text"] {
   /* padding: 4px; */
   border: 1px solid #9b9b9b;

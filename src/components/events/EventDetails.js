@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from "axios";
 import MapView from "../../components/locations/MapView";
 import { useLocation } from "../../contexts/Location.context";
@@ -17,6 +17,7 @@ export default function EventDetails() {
   const  { setLocationData } = useLocation()
  const { user: userData } = useContext(UserContext);
  const [isDeleted, setIsDeleted] = useState(false);
+ const navigate= useNavigate();
 
 
  const handleDeleteEvent = () => {
@@ -36,6 +37,7 @@ export default function EventDetails() {
     .delete(`${API_URL}/events/event/${event._id}`, config)
     .then(response => {
         setIsDeleted(true);
+        navigate('/events'); 
     })
     .catch(err => {
         console.error("Error deleting the event:", err);
