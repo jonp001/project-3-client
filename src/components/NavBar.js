@@ -4,6 +4,7 @@ import axios from "axios";
 import { NavLink } from 'react-router-dom';
 const API_URL= process.env.REACT_APP_API_URL || "http://localhost:5005";
 
+
 export default function NavBar() {
     const {user, setUser} = useContext(UserContext);
 
@@ -73,9 +74,10 @@ export default function NavBar() {
     return (
         <div>
           <nav className='navbar'>
+          <div className="logo-left"></div>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/events">Events</NavLink>
-            
+            <div className="logo-right"></div>
             {user &&(
               <div>
               <span> Hello, {user.name} </span>

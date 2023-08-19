@@ -4,12 +4,15 @@ import Events from "../components/events/Events"
 
 export default function EventsPage() {
   return (
-    <div>
+    <div className='events-page'>
     <h1>Events List:</h1>
+    <div className="events-container">
     <Events />
+    </div>
     <Link to = "/createEvent">
         <button>Create An Event</button>
     </Link>
     </div>
+    
   )
 }

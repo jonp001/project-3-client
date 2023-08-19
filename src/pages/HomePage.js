@@ -10,6 +10,7 @@ export default function HomePage() {
       { user ? <h4> Welcome, {user.name}! </h4> : <h4> HomePage </h4>}
 
       <div className='slogan'>
+        <h1> Rides-N-Races</h1>
         <h1>"Your "all in one" stop for finding group rides & races near you!"</h1>
       </div>
       <Link to="/events"> 
