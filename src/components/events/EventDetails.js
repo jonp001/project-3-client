@@ -89,7 +89,7 @@ export default function EventDetails() {
        <p className='event-level'>Event Level: {event.level}</p>
        <p className='created-by'> Created By: {event.createdBy ? event.createdBy.name : "Unknown"} </p>
        {event.location && event.location.startLocation && typeof event.location.startLocation.lat === 'number' && typeof event.location.startLocation.lng === 'number' && <MapView />}
-       { (userData.isAdmin || event.createdBy._id === userData._id) && (
+       { userData && (userData.isAdmin || (event.createdBy && event.createdBy._id === userData._id)) && (
         <div className='event-actions'>
     <Link to={`/events/edit-event/${event._id}`}>Edit Event</Link>
     <button onClick={handleDeleteEvent}>Delete Event</button>

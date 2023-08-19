@@ -99,8 +99,8 @@ export default function NavBar() {
           {successMessage && <div className= "successMessage">{successMessage}</div>}
           {errorMessage && <div className="errorMessage"> {errorMessage}</div>}
           {isSignUp !== null && (
-            <form onSubmit={handleSubmit}>
-            <div>
+            <form className='nav-input' onSubmit={handleSubmit}>
+            <div className='input-container'>
               <label>
                 Email: {" "}
                 <input 
@@ -110,7 +110,7 @@ export default function NavBar() {
                   onChange={handleChange} //
                 />
               </label>
-              <label>
+              <label className='password-input'>
                 Password: {" "}
                 <input 
                   type="password"
