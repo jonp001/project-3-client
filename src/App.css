@@ -37,31 +37,115 @@
   }
 }
 
+.navbar{
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color:  #ce8651;
+}
 
+.navbar a {
+  text-decoration: underline;
+  color: white;
+  margin: 0 10px;
+}
 
+.navbar button {
+  padding: 5px 15px;
+  margin: 5px;
+  cursor: pointer;
+}
 
+.successMessage, .errorMessage {
+  padding: 5px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
 
+ .successMessage {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
 
+.errorMessage {
+  background-color: #f2dede;
+  color: #a94442;
+}
 
+.navbar form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 10px 0;
+}
 
+.navbar label {
+  margin-bottom: 10px;
+}
 
+.auth-buttons{
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #2a4150;
+}
 
+.auth-buttons button:not(:last-child) { /* cool way to add margin to only one of the buttons */
+  margin-right: 10px; 
+}
 
+.home-page {
+  background-image: url("../public/images/bike-event-homepage-pic.jpeg");
+  background-size: cover;                           
+  background-repeat: no-repeat;                     
+  background-position: center center;               
+  background-attachment: fixed;                     
+  color: #fff;                                      
+  min-height: 100vh;                                
+  padding: 20px;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  flex-direction: column;                                   
+}
 
+.slogan {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  max-width: 80%; 
+  text-indent: -2em; 
+  padding-left: 2em; 
+  margin-top: -30vw; 
+}
 
+.events-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #6e929f;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  margin-top: 20px; 
+  transition: background-color 0.3s;
+  &:hover {                 /* &: allows for hover effect */
+    background-color: #2a4150;; 
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+.create-event-button{
+  padding: 10px 20px;
+  border: none;
+  background-color: #ce8651;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  margin-top: 20px; 
+  transition: background-color 0.3s;
+  &:hover {                 /* &: allows for hover effect */
+    background-color: #6e3c30; 
+  }
+}
 .instructions {
   position: relative;
   display: inline-block;

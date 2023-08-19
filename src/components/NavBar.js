@@ -72,7 +72,7 @@ export default function NavBar() {
 
     return (
         <div>
-          <nav>
+          <nav className='navbar'>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/events">Events</NavLink>
             
@@ -86,10 +86,12 @@ export default function NavBar() {
           {user ? (
             <button onClick={handleLogout}>Logout </button>
           ): (
-            <>
+            <div className='auth-buttons'>
           <button onClick={() => setisSignUp(true)}>Sign Up</button>
+         
           <button onClick={() => setisSignUp(false)}>Log In</button>
-            </>
+            </div>
+            
           )}
 
           {successMessage && <div className= "successMessage">{successMessage}</div>}
@@ -127,6 +129,7 @@ export default function NavBar() {
                 />
               </label>
               )}
+              
             </div>
             <button type="submit">{isSignUp ? "Sign up" : "Login"} </button>
             </form>

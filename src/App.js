@@ -12,6 +12,7 @@ import EventsPage from "./pages/EventsPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import ChooseLocation from "./components/locations/ChooseLocation";
 import EditLocation from "./components/locations/EditLocation";
+import CreateEventPage from "../src/pages/CreateEventPage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/events/edit-event/:eventId" element={<EditEvent />} />
             <Route path="/editLocation/:locationId" element = {<EditLocation />}/>
             <Route path="/users/:userId" element={ <UserProfilePage /> } />
+            <Route path="/events/createEvent" element={ <CreateEventPage />} />
           </Routes>
           </LocationProvider>
       </UserProvider>
