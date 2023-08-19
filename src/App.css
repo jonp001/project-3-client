@@ -96,6 +96,14 @@
   margin-right: 10px; 
 }
 
+.logout-button {
+  display: flex;
+  justify-content: center;
+  padding: 15px 20px;
+  background-color: #2a4150;
+  color: #ffffff; 
+}
+
 .home-page {
   background-image: url("../public/images/bike-event-homepage-pic.jpeg");
   background-size: cover;                           
@@ -264,6 +272,119 @@
   background-color: #6e3c30;
 }
 
+.create-event-page {
+  background-color: #e1e6eb;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-event-page h1 {
+  color: #3f3e40;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+form {
+  background-color: #d7d8d9;
+  padding: 20px;
+  border-radius: 5px;
+  color: #2f2e2f;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; 
+}
+
+form label {
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+form input[type="text"] {
+  padding: 10px;
+  border: 1px solid #9b9b9b;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+form label > label {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+form input[type="radio"] {
+  margin-right: 5px;
+}
+
+form button {
+  background-color: #ce8651;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+form button:hover {
+  background-color: #6e3c30;
+}
+
+.chooseLocation-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chooseLocation-input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.chooseLocation-input:focus {
+  border-color: #007aff;
+}
+
+.chooseLocation-list {
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.chooseLocation-item {
+  padding: 10px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chooseLocation-item:hover {
+  background-color: #f5f5f5;
+}
+
+.chooseLocation-button:hover {
+  background-color: #005bd2;
+}
+
+.chooseLocation-button:disabled {
+  background-color: #b0c5d8;
+  cursor: not-allowed;
+}
+
 .events
 .instructions {
   position: relative;
@@ -283,4 +404,118 @@
 
 .instructions:hover .instructions-content {
   display: block;
+}
+
+.edit-event-container {
+  background-color: #e1e6eb; 
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-event-form {
+  background-color: #d7d8d9; 
+  padding: 20px;
+  border-radius: 5px;
+  color: #2f2e2f;
+  width: 80%; 
+  display: flex;
+  flex-direction: column;
+  gap: 15px; 
+}
+
+.edit-event-form label {
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-event-form input[type="text"] {
+  padding: 10px;
+  border: 1px solid #9b9b9b;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+.edit-event-form label > label {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.edit-event-form input[type="radio"] {
+  margin-right: 5px;
+}
+
+.edit-event-form button {
+  background-color: #ce8651; 
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.edit-event-form button:hover {
+  background-color: #6e3c30; 
+}
+
+.edit-location-container {
+  background-color: #e1e6eb;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.edit-location-form {
+  background-color: #d7d8d9;
+  padding: 20px;
+  border-radius: 5px;
+  color: #2f2e2f;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; 
+}
+
+.edit-location-form h1 {
+  color: #3f3e40;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.edit-location-form input[type="text"],
+.edit-location-form input[type="number"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ebebeb;
+  font-size: 1rem;
+  color: #3f3e40;
+}
+
+.edit-location-form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #ce8651;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s;
+}
+
+.edit-location-form button:hover {
+  background-color: #6e3c30; 
 }

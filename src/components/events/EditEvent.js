@@ -61,7 +61,8 @@ export default function EditEvent() {
   if (!formData) return <div>Loading...</div>;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="edit-event-container">
+    <form className="edit-event-form" onSubmit={handleSubmit}>
       <label>
         Title:
         <input
@@ -116,5 +117,6 @@ export default function EditEvent() {
       </label>
       <button type="submit">Save Changes</button>
     </form>
+    </div>
   );
 }

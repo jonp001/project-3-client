@@ -8,7 +8,7 @@ export default function EditLocation() {
   const { locationId } = useParams();
   const [locationData, setLocationData] = useState(null);
   const navigate = useNavigate();
-  const { eventId } = useParams();
+  
 
   const [successMessage, setSuccessMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -61,7 +61,8 @@ export default function EditLocation() {
         config
       );
 
-      navigate(`/events`); 
+      setSuccessMessage("Location updated successfully!");
+      setTimeout(() => navigate(`/events`), 1500) 
     } catch (error) {
       console.error(
         "Error updating the location:",
@@ -73,10 +74,11 @@ export default function EditLocation() {
   if (!locationData) return <div>Loading...</div>
 
   return (
-    <div>
+    <div className="edit-location-container">
         {successMessage && <div className="successMessage">{successMessage}</div>}
         {errorMessage && <div className="errorMessage">{errorMessage}</div>}
-        <form onSubmit={handleLocationSubmit}>
+        <form className="edit-location-form" onSubmit={handleLocationSubmit}>
+        <h1> Edit Location Info!</h1>
             <input
                 type="number"
                 name="lat"

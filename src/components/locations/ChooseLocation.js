@@ -60,7 +60,7 @@ export default function ChooseLocation() {
   };
 
   return (
-    <div>
+    <div className="chooseLocation-container">
       {successMessage && <div className="successMessage">{successMessage}</div>}
       {errorMessage && <div className="errorMessage">{errorMessage}</div>}
       <form
@@ -72,6 +72,7 @@ export default function ChooseLocation() {
         {" "}
         {/*use the "step=any" to allow for floating point numbers" */}
         <input
+          className="chooseLocation-input"
           type="number"
           name="lat"
           step="any"
@@ -79,6 +80,7 @@ export default function ChooseLocation() {
           placeholder="Latitude"
         />
         <input
+          className="chooseLocation-input"
           type="number"
           name="lng"
           step="any"
@@ -86,24 +88,27 @@ export default function ChooseLocation() {
           placeholder="Longitude"
         />
         <input
+          className="chooseLocation-input"
           type="text"
           name="address"
           onChange={handleChange}
           placeholder="Address"
         />
         <input
+          className="chooseLocation-input"
           type="text"
           name="city"
           onChange={handleChange}
           placeholder="City"
         />
         <input
+          className="chooseLocation-input"
           type="text"
           name="state"
           onChange={handleChange}
           placeholder="State"
         />
-        <button type="submit">Choose Location</button>
+        <button className="chooseLocation-button" type="submit">Choose Location</button>
       </form>
       <div className="instructions">
         (

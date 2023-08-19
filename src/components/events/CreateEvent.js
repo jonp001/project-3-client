@@ -69,6 +69,7 @@ export default function CreateEvent() {
         
        <label>
         Event Type: 
+        </label>
        <label>
         <input 
           type="radio"
@@ -88,7 +89,7 @@ export default function CreateEvent() {
               onChange={handleChange}
               /> Group Ride
           </label>
-          </label>
+          
 
         <button type="submit">Create Event Listing</button>
 

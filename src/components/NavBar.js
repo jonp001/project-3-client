@@ -86,7 +86,7 @@ export default function NavBar() {
               )}
           </nav>
           {user ? (
-            <button onClick={handleLogout}>Logout </button>
+            <button className='logout-button' onClick={handleLogout}>Logout </button>
           ): (
             <div className='auth-buttons'>
           <button onClick={() => setisSignUp(true)}>Sign Up</button>
