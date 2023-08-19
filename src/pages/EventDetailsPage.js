@@ -1,19 +1,12 @@
 import React from 'react';
-import EventDetails from '../components/events/EventDetails'; // Adjust the import path if necessary
-
+import EventDetails from '../components/events/EventDetails'; 
 export default function EventDetailsPage() {
   return (
     <div className="event-details-page">
-      <header>
-        <h1>Event Details</h1>
-        {/* You can also add any navigation or header elements here */}
-      </header>
-      <main>
+      <h1>Event Details: </h1>
+        
         <EventDetails />
-      </main>
-      <footer>
-        {/* Any footer content or elements */}
-      </footer>
+    
     </div>
   );
 }

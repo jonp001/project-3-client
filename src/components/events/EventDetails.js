@@ -83,13 +83,14 @@ export default function EventDetails() {
     <div>
     {event ? (
       <div>
-       <h2> Event Title: {event.title} </h2>
-       <h3> Event Description: {event.description} </h3>
-       <h3> Event Type: {event.eventType} </h3>
-       <h4> Created By: {event.createdBy ? event.createdBy.name : "Unknown"} </h4>
+       <h2 className='event-title'> Event Title: {event.title} </h2>
+       <p className='event-description'> Event Description: {event.description} </p>
+       <p className='event-type'> Event Type: {event.eventType} </p>
+       <p className='event-level'>Event Level: {event.level}</p>
+       <p className='created-by'> Created By: {event.createdBy ? event.createdBy.name : "Unknown"} </p>
        {event.location && event.location.startLocation && typeof event.location.startLocation.lat === 'number' && typeof event.location.startLocation.lng === 'number' && <MapView />}
        { (userData.isAdmin || event.createdBy._id === userData._id) && (
-        <div>
+        <div className='event-actions'>
     <Link to={`/events/edit-event/${event._id}`}>Edit Event</Link>
     <button onClick={handleDeleteEvent}>Delete Event</button>
     </div>
