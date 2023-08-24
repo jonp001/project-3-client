@@ -52,14 +52,23 @@ export default function NavBar() {
       }
 
       setSuccessMessage(`Successfully ${isSignUp ? "signed up" : "logged in"}!!`);
-      setisSignUp(null);
+      setTimeout(() => {
+        setSuccessMessage(null);
+      }, 3000);
 
+      setisSignUp(null);
+    
     }catch (err) {
       console.log(err);
-    
+
       setErrorMessage("Login/signup failed. Try again.")
+
+      setTimeout(() => {
+        setErrorMessage(null);
+      }, 3000)
     }
   }
+
     const handleSubmit= (e) => {
         e.preventDefault();
         submitForm();
@@ -69,10 +78,14 @@ export default function NavBar() {
       setUser(null);
       localStorage.removeItem("userInfo");
       localStorage.removeItem("authToken");
+      setSuccessMessage("Successfully Logged Out!");
+      setTimeout(() => {
+        setSuccessMessage(null);
+      }, 3000)
     };
 
     return (
-        <div>
+        <div className='nav-container'>
           <nav className='navbar'>
           <div className="logo-left"></div>
             <NavLink to="/">Home</NavLink>
@@ -85,13 +98,13 @@ export default function NavBar() {
               </div>
               )}
           </nav>
+
           {user ? (
             <button className='logout-button' onClick={handleLogout}>Logout </button>
           ): (
             <div className='auth-buttons'>
-          <button onClick={() => setisSignUp(true)}>Sign Up</button>
-         
-          <button onClick={() => setisSignUp(false)}>Log In</button>
+          <button className='signup-button' onClick={() => setisSignUp(true)}>Sign Up</button>
+          <button className="login-button" onClick={() => setisSignUp(false)}>Log In</button>
             </div>
             
           )}

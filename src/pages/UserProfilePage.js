@@ -9,8 +9,7 @@ export default function UserProfilePage() {
     const { userId } = useParams();
     const { user } = useContext(UserContext);
     const [isEditing, setIsEditing] = useState(false);
-    const [viewedUser, setViewedUser] = useState(null);
-
+    const [viewedUser, setViewedUser] = useState({});
 
 
     useEffect(() => {
@@ -18,6 +17,7 @@ export default function UserProfilePage() {
         axios.get(`${API_URL}/user/${userId}`)
           .then((response) => {
             setViewedUser(response.data);
+            console.log('API Response:', response.data);
           })
           .catch((error) => {
             console.error('Error fetching user data:', error);
@@ -33,17 +33,20 @@ export default function UserProfilePage() {
         setIsEditing(false);
     };
 
+
     return(
-        <div>
+        <div className='user-profile-container'>
             <h1>{viewedUser.name}'s Profile</h1>
             <p> Bio: { viewedUser.bio || "No bio yet..." }</p>
-            <img src= {viewedUser.image || "default-image.png"} alt= "profileImg"/>
+            <img src= {viewedUser.img || "default-image.png"} alt= "profileImg"/>
             <p> Level: {viewedUser.level || "Level not set..." }</p>
+            <h3> Strava Profile: {viewedUser.stravaProfile || "Strava Profile not set.."}</h3>
             {isEditing ? (
                 <EditProfile user= {viewedUser} onSave={handleSaveClick} onCancel ={() => setIsEditing(false)} />
             ) : (
-                user && user._id === viewedUser && <button onClick={handleEditClick}>Edit Profile </button>
+                user && user._id === viewedUser._id && <button onClick={handleEditClick}>Edit Profile </button>
             )}
+           
         </div>
     );
 }
