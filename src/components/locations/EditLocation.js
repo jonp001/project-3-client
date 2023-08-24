@@ -71,7 +71,7 @@ export default function EditLocation() {
     }
   };
 
-  if (!locationData) return <div>Loading...</div>
+  if (!locationData) return <div>Loading Map...</div>
 
   return (
     <div className="edit-location-container">
